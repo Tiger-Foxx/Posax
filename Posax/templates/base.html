@@ -29,8 +29,9 @@
                     <!--End: Logo-->
                     <!-- Search -->
                     <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
-                        <form class="search-form" action="search-results-page.html" method="get">
-                            <input class="form-control" name="q" type="text" placeholder="Recherchez..." />
+                        <form class="search-form" action="{% url 'Recherche' %}" method="post">
+                            {% csrf_token %}
+                            <input class="form-control" name="sujet" type="text" placeholder="Recherchez..." />
                             <span class="text-muted">Recherchez & pressez "Enter" ou "ESC" pour fermer</span>
                         </form>
                     </div>
@@ -100,7 +101,7 @@
                                     </li>
                                     {% endif %}
                                     
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><a href="https://wa.me/+23765886669">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>

@@ -30,7 +30,7 @@ def inscription(request):
 
             current_site = get_current_site(request)
             mail_subject = 'Activez votre compte.'
-            message = render_to_string('acc_active_email.html', {
+            message = render_to_string('Comptes/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -42,10 +42,10 @@ def inscription(request):
         except Exception as e:
             return JsonResponse({"success": False, "message": str(e)})
     else:
-        return render(request, "auth.html")
+        return render(request, "Comptes/auth.html")
 
 def confirmation(request):
-    return render(request, 'confirmation_message.html')
+    return render(request, 'Comptes/confirmation_message.html')
 
 def activate(request, uidb64, token):
     try:
@@ -60,7 +60,7 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('index')
     else:
-        return render(request, 'activation_invalid.html')
+        return render(request, 'Comptes/activation_invalid.html')
 
     
     
@@ -70,7 +70,7 @@ def connexion(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         remember = request.POST.get('remember-me')
-
+        print(f"password {password}")
         user = authenticate(username=email, password=password)
         if user:
             login(request, user)
@@ -82,7 +82,7 @@ def connexion(request):
         else:
             return JsonResponse({"success": False, "message": "Nom d'utilisateur ou mot de passe incorrect."})
     else:
-        return render(request, 'auth.html')
+        return render(request, 'Comptes/auth.html')
     
 
 def deconnexion(request):

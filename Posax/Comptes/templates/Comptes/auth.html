@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,18 @@
     <script src="{% static 'login register/chooser/script.js' %}"></script>
     <title>PosaX | Votre Galerie d'Art </title>
 </head>
+<style>
+    .input-box{
+        margin: 5px;
+    }
+</style>
 
 <body>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+
+    <!--Template functions-->
+    <script src="{% static 'js/functions.js' %}"></script>
     <div class="wrapper">
         <nav class="nav">
             <div class="nav-logo">
@@ -42,12 +52,10 @@
                     <form action="#" id="formLogin">
                         {% csrf_token %}
                     <div class="input-box">
-                        <input type="text" class="input-field" name="email" required placeholder="Email">
-                        <i class="bx bx-user"></i>
+                        <input type="text" class="input-field" name="email" id="email" required placeholder="Email">
                     </div>
                     <div class="input-box">
-                        <input type="password" class="input-field" name="password" required placeholder="Password">
-                        <i class="bx bx-lock-alt"></i>
+                        <input type="password" class="input-field" name="password" id="password" required placeholder="Mot de passe">
                     </div>
                     <label for="" id="ErrorMessageLogin" style="color: red;font-weight:900"></label>
                     <div class="input-box">
@@ -70,8 +78,8 @@
                                 event.preventDefault();
                 
                                 var formData = {
-                                    email: $('#emailL').val(),
-                                    password: $('#passwordL').val(),
+                                    email: $('#email').val(),
+                                    password: $('#password').val(),
                                 };
                 
                                 $.ajax({
@@ -116,7 +124,7 @@
 
             <!------------------- registration form -------------------------->
             <div class="register-container" id="register">
-                <div class="top">
+                <div class="top" style="margin-top: 30px;">
                     <span>Vous avez un compte ? <a href="#" onclick="login()">Connexion</a></span>
                     <header>Inscription</header>
                 </div>
@@ -125,20 +133,16 @@
                     <div class="two-forms">
                         <div class="input-box">
                             <input type="text" class="input-field" name="nom" id="nom" required  placeholder="Votre nom">
-                            <i class="bx bx-user"></i>
                         </div>
                         <div class="input-box">
-                            <input type="text" class="input-field" name="whatsapp"  required placeholder="numero whatsapp">
-                            <i class="bx bx-user"></i>
+                            <input type="text" class="input-field" name="whatsapp"  required placeholder="whatsapp">
                         </div>
                     </div>
                     <div class="input-box">
                         <input type="email" class="input-field" name="email"  id="emailR"  required placeholder="Email">
-                        <i class="bx bx-envelope"></i>
                     </div>
                     <div class="input-box">
-                        <input type="password" class="input-field" name="password" id="passwordR"  required placeholder="Password">
-                        <i class="bx bx-lock-alt"></i>
+                        <input type="password" class="input-field" name="password" id="passwordR"  required placeholder="Mot de passe">
                     </div>
                     <div class="input-box">
                         <img src="{% static 'login register/images/user.png' %}"

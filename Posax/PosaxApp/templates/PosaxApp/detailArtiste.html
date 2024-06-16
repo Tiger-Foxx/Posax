@@ -41,7 +41,7 @@
                     <div class="post-item-description">
                         <h2>{{ article.titre }}</h2>
                         <p>{{ article.paragraphe1 }}</p>
-                        <a href="#" class="item-link"><i class="fa fa-arrow-right"></i> Details </a>
+                        <a href="{% url 'detail_article' article.id %}" class="item-link"><i class="fa fa-arrow-right"></i> Details </a>
                     </div>
                 </div>
             </div>

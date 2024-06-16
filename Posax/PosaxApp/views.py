@@ -104,3 +104,45 @@ def DetailArtiste(request, id):
 def liste_artistes(request):
     artistes = Artiste.objects.all()
     return render(request, 'PosaxApp/ListeArtistes.html', {'artistes': artistes})
+
+
+def detail_article(request,id):
+    article=get_object_or_404(Article,id=id)
+    return render(request, 'PosaxApp/ArticleDetail.html', {'article': article})
+
+
+from django.db.models import Q
+
+
+def Recherche(request):
+    sujet=request.POST.get('sujet')
+    
+    artworks = Oeuvre.objects.filter(
+    Q(titre__icontains=sujet) | 
+    Q(Auteur__nom__icontains=sujet) | 
+    Q(categorie__icontains=sujet)
+    ).order_by('-date')
+
+    articles = Article.objects.filter(
+    Q(titre__icontains=sujet) | 
+    Q(Auteur__nom__icontains=sujet)
+    ).order_by('-date')
+
+    # Organiser les œuvres par catégories
+    categories = {}
+    for artwork in artworks:
+        for category in artwork.categorie.split(' '):  # Supposons que les catégories soient séparées par des espaces
+            if category not in categories:
+                categories[category] = []
+            categories[category].append(artwork)
+    
+    # Limiter le premier paragraphe des articles à 150 caractères
+    for article in articles:
+        article.paragraphe1 = article.paragraphe1 [:80] + '...' if len(article.paragraphe1 ) > 150 else article.paragraphe1 
+    
+    context = {
+        'sujet':sujet,
+        'categories': categories,
+        'articles': articles,
+    }
+    return render(request, 'PosaxApp/publications.html', context)

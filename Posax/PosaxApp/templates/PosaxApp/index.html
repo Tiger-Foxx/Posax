@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="text-light text-end">
                     <h2 class="text-medium m-b-5">Explorez la Galerie</h2>
-                    <h3 class="font-nothing-you-could-do">Decouvrez tout ce que nos artistes ont a vous proposer</h3>
+                    <h3 class="font-nothing-you-could-do">Découvrez tout ce que nos artistes ont à vous proposer</h3>
                     <a href="https://www.altiba9.com/platfrom-interviews-for-artists/zhengyuan-gao-painting-poetic-scenes" class="item-link">Explorer <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="text-light">
                     <h2 class="text-medium m-b-5">Profil de PosaX </h2>
-                    <h3 class="font-nothing-you-could-do">Parcourez le profile de PosaX lui-même, et trouvez ce qu'il vous propose</h3>
+                    <h3 class="font-nothing-you-could-do">Parcourez le profile de PosaX lui-même, et découvrez ce qu'il vous propose</h3>
                     <a href="mysticism-pre.html" class="item-link">Parcourir <i class="fa fa-arrow-right"></i></a>
                     <br>
                     <a href="https://github.com/zhengyuan-gao/zhengyuan-gao.github.io/blob/main/files/Gao_Mysticism_2024.pdf?raw=true" class="item-link">Discuter avec PosaX (Whatsapp) <i class="fa fa-arrow-right"></i></a>
@@ -82,7 +82,7 @@
                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Depuis le {{article.date}}</span>
                                    <h2>{{article.titre}}</h2>
                                    <p>{{article.paragraphe1 | slice:100}}...</p>
-                                   <a href="#" class="item-link">Details <i class="fa fa-arrow-right"></i></a>
+                                   <a href="{% url 'detail_article' article.id %}" class="item-link">Details <i class="fa fa-arrow-right"></i></a>
                                </div>
                            </div>
                        </div>

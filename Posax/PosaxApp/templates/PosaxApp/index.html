@@ -11,7 +11,15 @@
                     <div class="text-middle text-light text-end" id="titrecont">
                         <h1 data-animate="fadeInUp" data-animate-delay="700" class="text-lg-light m-b-5" id="titre">Bienvenue sur
                             <br style="font-weight: 900;" />PosaX</h1>
+                            
+                            {% if user.is_authenticated %}
+                        <h3 class="font-nothing-you-could-do" id="cont">Content de vous revoir , Artiste {{user.nom}}</h3>
+                                
+                            {% else %}
                         <h3 class="font-nothing-you-could-do" id="cont">Un instant pour profiter de MAINTENANT.</h3>
+                                
+                            {% endif %}
+                                
                     </div>
                 </div>
             </div>

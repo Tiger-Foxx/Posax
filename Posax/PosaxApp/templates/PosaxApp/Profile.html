@@ -43,29 +43,29 @@
                             <form action='' class='form' data-animate="fadeInDown" data-animate-delay="300">
                                 <p class='field required'>
                                     <label class='label required' for='nom'>nom</label>
-                                    <input class='text-input' id='nom' name='nom' style="font-size: 14.5px;" required type='text'
+                                    <input class='text-input' id='nom' name='nom' value="{{utilisateur.nom}}" style="font-size: 14.5px;" required type='text'
                                         placeholder="Votre nom d'utilisateur">
                                 </p>
 
                                 <p class='field required'>
                                     <label class='label required' for='email'>email</label>
-                                    <input class='text-input' id='email' name='email' style="font-size: 14.5px;" required type='text'
-                                        placeholder="Votre addresse mail">
+                                    <input class='text-input' id='email' name='email' value="{{user.email}}" style="font-size: 14.5px;" required type='text'
+                                        >
                                 </p>
                                
                                 <p class='field required'>
                                     <label class='label required' for='whatsapp'>whatsapp</label>
-                                    <input class='text-input' id='whatsapp' name='whatsapp' style="font-size: 14.5px;" required type='text'
+                                    <input class='text-input' id='whatsapp' name='whatsapp' value="{{utilisateur.whatsapp}}" style="font-size: 14.5px;" required type='text'
                                         placeholder="Votre numero whatsapp">
                                 </p>
                                 <p class='field'>
                                     <label class='label required' for='facebook'>Lien facebook</label>
-                                    <input class='text-input' id='facebook' name='facebook' style="font-size: 14.5px;"  type='text'
+                                    <input class='text-input' id='facebook' name='facebook' value="{{utilisateur.facebook}}" style="font-size: 14.5px;"  type='text'
                                         placeholder="lien de votre profile facebook">
                                 </p>
                                 <p class='field'>
                                     <label class='label required' for='instagram'>Lien instagram</label>
-                                    <input class='text-input' id='instagram' name='instagram' style="font-size: 14.5px;"  type='text'
+                                    <input class='text-input' id='instagram' name='instagram' value="{{utilisateur.instagram}}" style="font-size: 14.5px;"  type='text'
                                         placeholder="lien de votre profile instagram">
                                 </p>
                                 <p class='field'>
@@ -75,7 +75,7 @@
                                 </p>
                                 <p class='field'>
                                     <label class='label' for='bio'>Une petite biographie</label>
-                                    <textarea class='textarea' cols='50' id='bio' name='bio'></textarea>
+                                    <textarea class='textarea' cols='50' id='bio' name='bio'> {{utilisateur.bio}} </textarea>
                                 </p>
                                
 

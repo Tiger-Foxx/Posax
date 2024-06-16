@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'login register/style.css' %}">
     <link rel="stylesheet" href="{% static 'login register/chooser/style.css' %}">
     <script src="{% static 'login register/chooser/script.js' %}"></script>
-    <title>Ludiflex | Login & Registration</title>
+    <title>PosaX | Votre Galerie d'Art </title>
 </head>
 
 <body>
@@ -33,31 +33,85 @@
 
             <!------------------- login form -------------------------->
 
-            <div class="login-container" id="login">
-                <div class="top">
-                    <span>Vous n'avez pas de compte ? <a href="#" onclick="register()">Inscription</a></span>
-                    <header>Connexion</header>
-                </div>
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Username or Email">
-                    <i class="bx bx-user"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password">
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <input type="submit" class="submit" value="Sign In">
-                </div>
-                <div class="two-col">
-                    <div class="one">
-                        <input type="checkbox" id="login-check">
-                        <label for="login-check"> Se souvenir de moi</label>
+            <div class="login-container"  id="login">
+               
+                    <div class="top">
+                        <span>Vous n'avez pas de compte ? <a href="#" onclick="register()">Inscription</a></span>
+                        <header>Connexion</header>
                     </div>
-                    <div class="two">
-                        <label><a href="#">Mot de passe oublie?</a></label>
+                    <form action="#" id="formLogin">
+                        {% csrf_token %}
+                    <div class="input-box">
+                        <input type="text" class="input-field" name="email" required placeholder="Email">
+                        <i class="bx bx-user"></i>
                     </div>
-                </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" name="password" required placeholder="Password">
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <label for="" id="ErrorMessageLogin" style="color: red;font-weight:900"></label>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="connexion">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox"  name="remember-me" id="login-check">
+                            <label for="login-check"> Se souvenir de moi</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Mot de passe oublie?</a></label>
+                        </div>
+                    </div>
+
+                    </form>
+                    <script>
+                        $(document).ready(function() {
+                            $('#formLogin').submit(function(event) {
+                                event.preventDefault();
+                
+                                var formData = {
+                                    email: $('#emailL').val(),
+                                    password: $('#passwordL').val(),
+                                };
+                
+                                $.ajax({
+                                    url: '/connexion/',
+                                    type: 'POST',
+                                    data: formData,
+                                    headers: {
+                                        'X-CSRFToken': getCookie1('csrftoken')
+                                    },
+                                    success: function(response) {
+                                        if (response.success) {
+                                            window.location.href = response.redirect_url;
+                                        } else {
+                                            $('#ErrorMessageLogin').text(response.message);
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        $('#ErrorMessageLogin').text("Une erreur s'est produite.");
+                                    }
+                                });
+                            });
+                        });
+                
+                        function getCookie1(name) {
+                            var cookieValue = null;
+                            if (document.cookie && document.cookie !== '') {
+                                var cookies = document.cookie.split(';');
+                                for (var i = 0; i < cookies.length; i++) {
+                                    var cookie = cookies[i].trim();
+                                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                        break;
+                                    }
+                                }
+                            }
+                            return cookieValue;
+                        }
+                    </script>
+
+                
             </div>
 
             <!------------------- registration form -------------------------->
@@ -66,50 +120,101 @@
                     <span>Vous avez un compte ? <a href="#" onclick="login()">Connexion</a></span>
                     <header>Inscription</header>
                 </div>
-                <div class="two-forms">
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Firstname">
-                        <i class="bx bx-user"></i>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Lastname">
-                        <i class="bx bx-user"></i>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Email">
-                    <i class="bx bx-envelope"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" class="input-field" placeholder="Password">
-                    <i class="bx bx-lock-alt"></i>
-                </div>
-                <div class="input-box">
-                    <img src="{% static 'login register/images/user.png' %}"
-                        alt="Default Avatar Profile Vector, User Profile Stock Vector - Illustration of  graphic, media: 179376714"
-                        onclick="uploadProfile()" id="current-profile">
-                    <div class="profile-options hide">
-                        <div class="profile-option" id="upload-pfp">
-                            <button hidden="true" id="upload-btn" onclick="uploadProfile()" type="button">Upload
-                                picture</button>
-                            <input type="file" id="choose" accept=".png, .jpg, .jpeg">
+                <form action="" id="formRegister">
+                    {% csrf_token %}
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" name="nom" id="nom" required  placeholder="Votre nom">
+                            <i class="bx bx-user"></i>
                         </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" name="whatsapp"  required placeholder="numero whatsapp">
+                            <i class="bx bx-user"></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" name="email"  id="emailR"  required placeholder="Email">
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" name="password" id="passwordR"  required placeholder="Password">
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <img src="{% static 'login register/images/user.png' %}"
+                            alt="Default Avatar Profile Vector, User Profile Stock Vector - Illustration of  graphic, media: 179376714"
+                            onclick="uploadProfile()" id="current-profile">
+                        <div class="profile-options hide">
+                            <div class="profile-option" id="upload-pfp">
+                                <button hidden="true" id="upload-btn" onclick="uploadProfile()" type="button">Upload
+                                    picture</button>
+                                <input type="file" id="choose" name="photo" required  accept=".png, .jpg, .jpeg">
+                            </div>
+    
+                        </div>
+                    </div>
+                    <label for="" id="ErrorMessageRegister" style="color: red;font-weight:900"></label>
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Inscription">
+                    </div>
+    
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="register-check">
+                            <label for="register-check">Se souvenir</label>
+                        </div>
+                    </div>
 
-                    </div>
-                </div>
-                <div class="input-box">
-                    <input type="submit" class="submit" value="Register">
-                </div>
+                </form>
 
-                <div class="two-col">
-                    <div class="one">
-                        <input type="checkbox" id="register-check">
-                        <label for="register-check">Se souvenir</label>
-                    </div>
-                    </div>
-                </div>
+                <script>
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie !== '') {
+                            var cookies = document.cookie.split(';');
+                            for (var i = 0; i < cookies.length; i++) {
+                                var cookie = cookies[i].trim();
+                                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+            
+                    $(document).ready(function() {
+                        $('#formRegister').submit(function(event) {
+                            event.preventDefault();
+            
+                            var formData = new FormData(this);
+                            $.ajax({
+                                url: '/inscription/',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                headers: {
+                                    'X-CSRFToken': getCookie('csrftoken')
+                                },
+                                success: function(response) {
+                                    if (response.success) {
+                                        window.location.href = response.redirect_url;
+                                    } else {
+                                        $('#ErrorMessageRegister').text(response.message);
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    $('#ErrorMessageRegister').text("Une erreur s'est produite.");
+                                }
+                            });
+                        });
+                    });
+                </script>
+
             </div>
         </div>
+     </div>
 
         <script>
             let inp = document.querySelector("#choose");

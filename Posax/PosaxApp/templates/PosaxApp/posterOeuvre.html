@@ -40,124 +40,102 @@
                             <!-- partial:index.partial.html -->
                         <hr class="space">
 
-                            <form action='' class='form' data-animate="fadeInDown" data-animate-delay="300">
-                                <p class='field required'>
-                                    <label class='label required' for='titre'>Titre</label>
-                                    <input class='text-input' id='titre1' name='titre' style="font-size: 14.5px;" required type='text'
-                                        placeholder="le nom de l'oeuvre">
-                                </p>
-                                <div class='field'>
-                                    <label class='label'>Categorie</label>
-                                    <ul class='checkboxes'>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-0' name='choice' type='checkbox'
-                                                value='0'>
-                                            <label class='checkbox-label' for='choice-0'>Architecture</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-1' name='choice' type='checkbox'
-                                                value='1'>
-                                            <label class='checkbox-label' for='choice-1'>Collage</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-2' name='choice' type='checkbox'
-                                                value='2'>
-                                            <label class='checkbox-label' for='choice-2'>Dessin</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-3' name='choice' type='checkbox'
-                                                value='3'>
-                                            <label class='checkbox-label' for='choice-3'>Gravure</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-4' name='choice' type='checkbox'
-                                                value='4'>
-                                            <label class='checkbox-label' for='choice-4'>Immobilier</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-5' name='choice' type='checkbox'
-                                                value='5'>
-                                            <label class='checkbox-label' for='choice-5'>Installation</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-6' name='choice' type='checkbox'
-                                                value='6'>
-                                            <label class='checkbox-label' for='choice-6'>Land Art</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-7' name='choice' type='checkbox'
-                                                value='7'>
-                                            <label class='checkbox-label' for='choice-7'>Mosaïque</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-8' name='choice' type='checkbox'
-                                                value='8'>
-                                            <label class='checkbox-label' for='choice-8'>Peinture</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-9' name='choice' type='checkbox'
-                                                value='9'>
-                                            <label class='checkbox-label' for='choice-9'>Performance</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-10' name='choice' type='checkbox'
-                                                value='10'>
-                                            <label class='checkbox-label' for='choice-10'>Photographie</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-11' name='choice' type='checkbox'
-                                                value='11'>
-                                            <label class='checkbox-label' for='choice-11'>Sculpture</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-12' name='choice' type='checkbox'
-                                                value='12'>
-                                            <label class='checkbox-label' for='choice-12'>Street Art</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-13' name='choice' type='checkbox'
-                                                value='13'>
-                                            <label class='checkbox-label' for='choice-13'>Textile</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-14' name='choice' type='checkbox'
-                                                value='14'>
-                                            <label class='checkbox-label' for='choice-14'>Vidéo</label>
-                                        </li>
-                                        <li class='checkbox'>
-                                            <input class='checkbox-input' id='choice-15' name='choice' type='checkbox'
-                                                value='15'>
-                                            <label class='checkbox-label' for='choice-15'>Autre</label>
-                                        </li>
-
-                                    </ul>
+                        <form action="{% url 'publier_oeuvre' %}" method="post" enctype="multipart/form-data" class='form' data-animate="fadeInDown" data-animate-delay="300">
+                            {% csrf_token %}
+                            <p class='field required'>
+                                <label class='label required' for='titre'>Titre</label>
+                                <input class='text-input' id='titre1' name='titre' style="font-size: 14.5px;" required type='text' placeholder="le nom de l'oeuvre">
+                            </p>
+                            <div class='field'>
+                                <label class='label'>Categorie</label>
+                                <ul class='checkboxes'>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-0' name='choice' type='checkbox' value='Architecture'>
+                                    <label class='checkbox-label' for='choice-0'>Architecture</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-1' name='choice' type='checkbox' value='Collage'>
+                                    <label class='checkbox-label' for='choice-1'>Collage</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-2' name='choice' type='checkbox' value='Dessin'>
+                                    <label class='checkbox-label' for='choice-2'>Dessin</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-3' name='choice' type='checkbox' value='Gravure'>
+                                    <label class='checkbox-label' for='choice-3'>Gravure</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-4' name='choice' type='checkbox' value='Immobilier'>
+                                    <label class='checkbox-label' for='choice-4'>Immobilier</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-5' name='choice' type='checkbox' value='Installation'>
+                                    <label class='checkbox-label' for='choice-5'>Installation</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-6' name='choice' type='checkbox' value='Land Art'>
+                                    <label class='checkbox-label' for='choice-6'>Land Art</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-7' name='choice' type='checkbox' value='Mosaïque'>
+                                    <label class='checkbox-label' for='choice-7'>Mosaïque</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-8' name='choice' type='checkbox' value='Peinture'>
+                                    <label class='checkbox-label' for='choice-8'>Peinture</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-9' name='choice' type='checkbox' value='Performance'>
+                                    <label class='checkbox-label' for='choice-9'>Performance</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-10' name='choice' type='checkbox' value='Photographie'>
+                                    <label class='checkbox-label' for='choice-10'>Photographie</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-11' name='choice' type='checkbox' value='Sculpture'>
+                                    <label class='checkbox-label' for='choice-11'>Sculpture</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-12' name='choice' type='checkbox' value='Street Art'>
+                                    <label class='checkbox-label' for='choice-12'>Street Art</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-13' name='choice' type='checkbox' value='Textile'>
+                                    <label class='checkbox-label' for='choice-13'>Textile</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-14' name='choice' type='checkbox' value='Vidéo'>
+                                    <label class='checkbox-label' for='choice-14'>Vidéo</label>
+                                  </li>
+                                  <li class='checkbox'>
+                                    <input class='checkbox-input' id='choice-14' name='choice' type='checkbox' value='Vidéo'>
+                                    <label class='checkbox-label' for='choice-14'>Autre</label>
+                                  </li>
                                 </div>
-                                <p class='field required'>
-                                    <label class='label required' for='photo1'>Photo</label>
-                                    <input class='text-input' id='photo1' name='photo1' required type='file'
-                                        accept=".png, .jpg, .jpeg">
-                                </p>
-                                <p class='field '>
-                                    <label class='label ' for='photo2'>Autre Photo(facultatif)</label>
-                                    <input class='text-input' id='photo2' name='photo2' type='file'
-                                        accept=".png, .jpg, .jpeg">
-                                </p>
-                                <p class='field '>
-                                    <label class='label ' for='photo3'>Autre Photo(facultatif)</label>
-                                    <input class='text-input' id='photo3' name='photo3' type='file'
-                                        accept=".png, .jpg, .jpeg">
-                                </p>
-                                <p class='field '>
-                                    <label class='label ' for='photo4'>Autre Photo(facultatif)</label>
-                                    <input class='text-input' id='photo4' name='photo4' type='file'
-                                        accept=".png, .jpg, .jpeg">
-                                </p>
-
-                                <p class='field half'>
-                                    <input class='button' type='submit' value='Poster'>
-                                </p>
-                            </form>
-                            <!-- partial -->
+                              
+                            <p class='field required'>
+                                <label class='label required' for='photo1'>Photo</label>
+                                <input class='text-input' id='photo1' name='photo1' required type='file' accept=".png, .jpg, .jpeg">
+                            </p>
+                            <p class='field'>
+                                <label class='label' for='photo2'>Autre Photo (facultatif)</label>
+                                <input class='text-input' id='photo2' name='photo2' type='file' accept=".png, .jpg, .jpeg">
+                            </p>
+                            <p class='field'>
+                                <label class='label' for='photo3'>Autre Photo (facultatif)</label>
+                                <input class='text-input' id='photo3' name='photo3' type='file' accept=".png, .jpg, .jpeg">
+                            </p>
+                            <p class='field'>
+                                <label class='label' for='photo4'>Autre Photo (facultatif)</label>
+                                <input class='text-input' id='photo4' name='photo4' type='file' accept=".png, .jpg, .jpeg">
+                            </p>
+                            <p class='field half'>
+                                <input class='button' type='submit' value='Poster'>
+                            </p>
+                        </form>
+                        
 
                         </div>
                         <!-- Google Map -->

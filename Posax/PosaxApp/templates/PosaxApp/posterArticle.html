@@ -40,7 +40,8 @@
                             <!-- partial:index.partial.html -->
                         <hr class="space">
 
-                            <form action='' class='form' data-animate="fadeInDown" data-animate-delay="300">
+                            <form action="{% url 'publier_article' %}" enctype="multipart/form-data" class='form' method="post" data-animate="fadeInDown" data-animate-delay="300">
+                                {% csrf_token %}
                                 <p class='field required'>
                                     <label class='label required' for='titre'>Titre</label>
                                     <input class='text-input' id='titre1' name='titre' style="font-size: 14.5px;" required type='text'
@@ -68,6 +69,7 @@
                                 <p class='field half'>
                                     <input class='button' type='submit' value='Poster'>
                                 </p>
+                            
                             </form>
                             <!-- partial -->
 

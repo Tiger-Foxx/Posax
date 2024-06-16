@@ -3,76 +3,69 @@
 {% block content %}
 {% load static %}
 
-
-        <!-- Page title -->
-        <section id="page-title" data-bg-parallax="images/BackgroundColor.jpg">
-            <div class="container">
-                <div class="container-fullscreen">
-                    <div class="text-middle text-center text-end">
-                        <p class="lead" data-animate="fadeInDown" data-animate-delay="300">About us</p>
-                    </div>
-                </div>
-                <div class="breadcrumb">
-                    <ul>
-                        <li><a href="index.html">Home</a> </li>
-                        <li class="active">About us </li>
-                    </ul>
-                </div>
+<!-- Titre de la page -->
+<section id="page-title" data-bg-parallax="{% static 'images/BackgroundColor.jpg' %}">
+    <div class="container">
+        <div class="container-fullscreen">
+            <div class="text-middle text-center text-end">
+                <p class="lead" data-animate="fadeInDown" data-animate-delay="300">À propos de nous</p>
             </div>
-        </section>
-        <!-- end: Page title -->
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="{% url 'index' %}">Accueil</a></li>
+                <li class="active">À propos de nous</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Fin du titre de la page -->
 
-        
-         <!-- About us -->
-         <section>
-            <div class="container">
+<!-- À propos de nous -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12">
+                <h4>À propos de nous</h4>
+                <h3>Bienvenue chez POSAX, un sanctuaire en ligne pour les artistes souhaitant archiver leurs expositions et un espace créatif célébrant les talents diversifiés.</h3>
+                <p class="lead">Notre mission est de fournir une plateforme ouvrant des portes aux talents émergents, favorisant la diversité dans les genres artistiques contemporains locaux. POSAX est dédié à préserver l'essence des efforts artistiques des artistes établis et émergents, et à présenter leurs œuvres captivantes, avec un accent particulier sur le soutien et la promotion des artistes déracinés.</p>
+            </div>
+
+            <div class="col-lg-6 offset-lg-1 m-t-40">
                 <div class="row">
-                    <div class="col-lg-5 col-md-12">
-                        <h4>About us</h4>
-                        <h3>Welcome to our online gallery, a sanctuary for artists to archive their exhibitions and a creative space to celebrate diverse talents.</h3>
-                        <p class="lead">Our mission is to provide a platform that opens doors for aspiring talents, fostering diversity in local contemporary art genres. The gallery is dedicated to preserving the essence of the artistic endeavours of both established and emerging artists and showcasing their captivating works, with a particular focus on supporting and nurturing the uprooted artists.</p>
-                        
+                    <!-- Valeur fondamentale -->
+                    <div class="col-lg-6">
+                        <h4>Valeur fondamentale</h4>
+                        <p>Notre galerie agit comme un pont, connectant des artistes de diverses régions, origines et croyances spirituelles. Elle vise à favoriser la pollinisation croisée des idées et la formation de liens artistiques, en s'efforçant de briser les barrières et de créer un espace véritablement inclusif pour l'art.</p>
                     </div>
+                    <!-- Fin de la valeur fondamentale -->
 
-                    <div class="col-lg-6 offset-1 m-t-40">
-                        <div class="row">
-                            
-                            <!-- features box -->
-                            <div class="col-lg-6">
-                                <h4>Core Value</h4>
-                                <p>Our gallery acts as a bridge, connecting artists from various regions, backgrounds, and spiritual beliefs. It aims to foster the cross-pollination of ideas and the formation of artistic bonds, strives to break down barriers and create a truly inclusive space for art.</p>
-                            </div>
-                            <!-- end: features box -->
-
-                            <!-- features box -->
-                            <div class="col-lg-6">
-                                <h4>Special Interest</h4>
-                                <p>We hold a deep appreciation for the spiritual dimensions of artistic expression. We firmly believe that art has the power to transcend the mundane and touch the depths of our souls. Our gallery aims to elevate collective consciousness about the profound intertwining of spirituality and art. </p>
-                            </div>
-                            <!-- end: features box -->
-
-                            <!-- features box -->
-                            <div class="col-lg-6">
-                                <h4>Other Services</h4>
-                                <p>In addition to our exhibitions, we facilitate engaging conversations around art through discussions, critiques, and reflections. Our dedicated team provides thoughtful analysis and insights, encouraging a deeper connection with the artwork and fostering a sense of community within our virtual gallery.</p>
-                            </div>
-                            <!-- end: features box -->
-
-                            <!-- features box -->
-                            <div class="col-lg-6">
-                                <h4>Join us</h4>
-                                <p>Whether you are an artist, collector, or simply an art enthusiast, we invite you to explore our virtual gallery and immerse yourself in the beauty and creativity of contemporary art. Join us on this exciting journey as we support emerging artists, nurture regional art genres, and build a vibrant community that celebrates artistic expression in all its forms.</p>
-                            </div>
-                            <!-- end: features box -->
-
-
-                        </div>
+                    <!-- Intérêt spécial -->
+                    <div class="col-lg-6">
+                        <h4>Intérêt spécial</h4>
+                        <p>Nous avons une profonde appréciation pour les dimensions spirituelles de l'expression artistique. Nous croyons fermement que l'art a le pouvoir de transcender le banal et de toucher les profondeurs de nos âmes. Notre galerie vise à élever la conscience collective sur l'interconnexion profonde entre la spiritualité et l'art.</p>
                     </div>
-                    <!-- end features box -->
+                    <!-- Fin de l'intérêt spécial -->
+
+                    <!-- Autres services -->
+                    <div class="col-lg-6">
+                        <h4>Autres services</h4>
+                        <p>En plus de nos expositions, nous facilitons des conversations engageantes autour de l'art à travers des discussions, des critiques et des réflexions. Notre équipe dédiée fournit des analyses et des perspectives réfléchies, encourageant une connexion plus profonde avec les œuvres d'art et favorisant un sentiment de communauté au sein de notre galerie virtuelle.</p>
+                    </div>
+                    <!-- Fin des autres services -->
+
+                    <!-- Rejoignez-nous -->
+                    <div class="col-lg-6">
+                        <h4>Rejoignez-nous</h4>
+                        <p>Que vous soyez un artiste, un collectionneur ou simplement un amateur d'art, nous vous invitons à explorer notre galerie virtuelle et à vous immerger dans la beauté et la créativité de l'art contemporain. Rejoignez-nous dans ce voyage passionnant alors que nous soutenons les artistes émergents, nourrissons les genres artistiques régionaux et construisons une communauté vibrante qui célèbre l'expression artistique sous toutes ses formes.</p>
+                    </div>
+                    <!-- Fin de Rejoignez-nous -->
                 </div>
             </div>
-        </section>
-        <!-- end: About us -->
+            <!-- Fin des boîtes de fonctionnalités -->
+        </div>
+    </div>
+</section>
+<!-- Fin de À propos de nous -->
 
- 
-        {% endblock %}
+{% endblock %}

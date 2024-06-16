@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page title -->
+<section id="page-title" data-bg-parallax="{% static 'images/para2.jpg' %}" >
+    <div class="container" >
+        <div class="container-fullscreen">
+            <div class="text-middle text-center text-end">
+                <span style="font-weight: 900 !important;color:white !important"><p class="lead" data-animate="fadeInDown" data-animate-delay="300" style="font-weight: 900 !important;color:white !important">VOUS ETES INSCRIT</p></span>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="index.html">Acceuil</a> </li>
+                <li class="active">confirmation</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- end: Page title -->
+
+<div class="wishlist-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 style="text-align: center;">Merci de vous être inscrit !</h1>
+                <p style="text-align: center;">Un email de confirmation a été envoyé à votre adresse email. Veuillez vérifier votre boîte de réception pour activer votre compte.</p>
+                <p style="text-align: center;">Verifiez Vos spam si vous ne le voyez pas.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

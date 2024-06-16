@@ -54,35 +54,53 @@
                         <div class="container">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html">Acceuil</a></li>
-                                    <li><a href="about-us.html">A propos de nous</a></li>
+                                    <li><a href="{% url 'index' %}">Acceuil</a></li>
+                                    <li><a href="{% url 'about' %}">A propos de nous</a></li>
                                     <li class="dropdown mega-menu-item"><a href="#">Artistes</a>
                                         <ul class="dropdown-menu">
                                             <li class="mega-menu-content">
                                                 <div class="row">
+                                                    
+                                                    {% if user.is_authenticated %}
+                                                    <div class="col-lg-1-2">
+                                                        <ul>
+                                                            <li class="mega-menu-title">Profil Artiste</li>
+                                                            <li><a href="{% url 'logout' %}">Se deconnecter</a></li>
+                                                            <li><a href="{% url 'profile' user.id %}">Completez votre profile</a></li>
+
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                    {% else %}
                                                     <div class="col-lg-1-2">
                                                         <ul>
                                                             <li class="mega-menu-title">Etes-vous un artiste ?</li>
-                                                            <li><a href="exhibition-2023-1.html">S'inscrire</a></li>
-                                                            <li><a href="exhibition-2023-2.html">Se Connecter</a></li>
-                                                            <li><a href="PosaX.html">Completez votre profile</a></li>
+                                                            <li><a href="{% url 'inscription' %}">S'inscrire</a></li>
+                                                            <li><a href="{% url 'connexion' %}">Se Connecter</a></li>
 
                                                             <li class="mega-menu-title">Etes-vous un client ?</li>
                                                             <li><a href="mysticism-pre.html">Liste des Artistes</a></li>
                                                         </ul>
                                                     </div>
+                                                    {% endif %}
+                                                        
+                                                    
                                                 </div>
                                             </li>
                                         </ul>
                                     </li>
+                                    
+                                    {% if user.is_authenticated  %}
+                                            
                                     <li class="dropdown"><a href="#">Publier</a>
                                         <ul class="dropdown-menu">
-                                                    <li><a href="PosaX.html">Ecrire un article</a></li>
-                                                    <li><a href="PosaX.html">Poster une oeuvre</a></li>
-                                                    <li><a href="PosaX.html">Vos publications</a></li>
+                                                    <li><a href="{% url 'publier_article' %}">Ecrire un article</a></li>
+                                                    <li><a href="{% url 'publier_oeuvre' %}">Poster une oeuvre</a></li>
+                                                    <li><a href="#">Vos publications</a></li>
                                          </ul>
                                     </li>
-                                    <li><a href="https://spectragallery.github.io/blog/index.html">Blog</a></li>
+                                    {% endif %}
+                                    
                                     <li><a href="contact-us.html">Contact</a></li>
                                 </ul>
                             </nav>

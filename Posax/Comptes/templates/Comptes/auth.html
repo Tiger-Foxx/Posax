@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'login register/style.css' %}">
+    <link rel="stylesheet" href="{% static 'login register/chooser/style.css' %}">
+    <script src="{% static 'login register/chooser/script.js' %}"></script>
+    <title>Ludiflex | Login & Registration</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>PosaX</p>
+            </div>
+            
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Connexion</button>
+                <button class="btn" id="registerBtn" onclick="register()">Inscription</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+
+        <!----------------------------- Form box ----------------------------------->
+        <div class="form-box">
+
+            <!------------------- login form -------------------------->
+
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Vous n'avez pas de compte ? <a href="#" onclick="register()">Inscription</a></span>
+                    <header>Connexion</header>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Username or Email">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Sign In">
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="login-check">
+                        <label for="login-check"> Se souvenir de moi</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Mot de passe oublie?</a></label>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------- registration form -------------------------->
+            <div class="register-container" id="register">
+                <div class="top">
+                    <span>Vous avez un compte ? <a href="#" onclick="login()">Connexion</a></span>
+                    <header>Inscription</header>
+                </div>
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname">
+                        <i class="bx bx-user"></i>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Email">
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <img src="{% static 'login register/images/user.png' %}"
+                        alt="Default Avatar Profile Vector, User Profile Stock Vector - Illustration of  graphic, media: 179376714"
+                        onclick="uploadProfile()" id="current-profile">
+                    <div class="profile-options hide">
+                        <div class="profile-option" id="upload-pfp">
+                            <button hidden="true" id="upload-btn" onclick="uploadProfile()" type="button">Upload
+                                picture</button>
+                            <input type="file" id="choose" accept=".png, .jpg, .jpeg">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
+                </div>
+
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="register-check">
+                        <label for="register-check">Se souvenir</label>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let inp = document.querySelector("#choose");
+            let options = document.querySelector(".profile-options");
+
+            const pfpClicked = () => {
+                options.classList.remove("hide");
+            };
+
+            const uploadProfile = (e) => {
+                inp.click();
+            };
+
+            const cancel = () => {
+                options.classList.add("hide");
+            };
+
+            inp.addEventListener("change", (e) => {
+                let preview = document.querySelector("#current-profile");
+                console.log(inp.file);
+                preview.src = URL.createObjectURL(e.target.files[0]);
+            });
+        </script>
+
+        <script>
+
+            function myMenuFunction() {
+                var i = document.getElementById("navMenu");
+
+                if (i.className === "nav-menu") {
+                    i.className += " responsive";
+                } else {
+                    i.className = "nav-menu";
+                }
+            }
+
+        </script>
+
+        <script>
+
+            var a = document.getElementById("loginBtn");
+            var b = document.getElementById("registerBtn");
+            var x = document.getElementById("login");
+            var y = document.getElementById("register");
+
+            function login() {
+                x.style.left = "4px";
+                y.style.right = "-520px";
+                a.className += " white-btn";
+                b.className = "btn";
+                x.style.opacity = 1;
+                y.style.opacity = 0;
+            }
+
+            function register() {
+                x.style.left = "-510px";
+                y.style.right = "5px";
+                a.className = "btn";
+                b.className += " white-btn";
+                x.style.opacity = 0;
+                y.style.opacity = 1;
+            }
+
+        </script>
+
+</body>
+
+</html>

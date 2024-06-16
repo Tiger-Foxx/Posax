@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+    
+        <!-- Page title -->
+        <section id="page-title" data-bg-parallax="images/BackgroundColor.jpg">
+            <div class="container">
+                <div class="container-fullscreen">
+                    <div class="text-middle text-center text-end">
+                        <p class="lead" data-animate="fadeInDown" data-animate-delay="300">Contact us</p>
+                    </div>
+                </div>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Home</a> </li>
+                        <li class="active">Contact us </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- end: Page title -->
+        <!-- CONTENT -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="text-uppercase">Email Address</Address></h3>
+                        <a href="mailto:spectra.gallery@outlook.com">spectra.gallery@outlook.com</a>
+                        <hr class="space">
+                        <h3 class="text-uppercase">Physical Address</Address></h3>
+                            <address>
+                                    <strong>China</strong><br>
+                                    Jingdezhen<br> 
+                            </address>
+                     </div>
+                    
+                
+                    <div class="col-lg-6">
+                        <h3 class="text-uppercase">Leave us a Quick Message</h3>
+                        <div class="row">
+                        <div id="formkeep-embed" data-formkeep-url="https://formkeep.com/p/f07dfcd57ca1fb2a15b16a5e37f18b52?embedded=1"></div>
+
+                        <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+                        <script type="text/javascript" src="https://formkeep-production-herokuapp-com.global.ssl.fastly.net/formkeep-embed.js"></script>
+
+                        </div>
+                        <!-- Google Map -->
+                        <!-- <div class="map" data-latitude="-37.817240" data-longitude="144.955826" data-style="light" data-info="Hello from &lt;br&gt; C"></div> -->
+                        <!-- end: Google Map -->
+                    </div>
+                </div>
+            </div>
+        
+                    
+        
+        </section>
+    
+    
+        <!-- end: Content -->
+  
+        {% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'baseform.html' %}
+
+{% block content %}
+{% load static %}
+
+
+        <!-- Page title -->
+        <section id="page-title" data-bg-parallax="{% static 'images/para5.jpg' %}" >
+            <div class="container" >
+                <div class="container-fullscreen">
+                    <div class="text-middle text-center text-end">
+                        <span style="font-weight: 900 !important;color:white !important"><p class="lead" data-animate="fadeInDown" data-animate-delay="300" style="font-weight: 900 !important;color:white !important">Postez Une Oeuvre</p></span>
+                    </div>
+                </div>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Acceuil</a> </li>
+                        <li class="active">Poster </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- end: Page title -->
+        <!-- CONTENT -->
+        <section style="color: white !important;background-color:#111111">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="text-uppercase" data-animate="fadeInDown" data-animate-delay="300" style="color: white !important;">Vous devez Remplir les informations et selectioner la categorie</Address>
+                        </h3>
+                        <hr class="space">
+                        <h3 class="text-uppercase" data-animate="fadeInDown" data-animate-delay="300" style="color: white !important;">Les photos doivent etre de bonne qualite,<br> Pour une meme oeuvre , il est conseille d'avoir des photos du meme <strong>"Ratio"</strong></Address>
+                        </h3>
+                        
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <!-- partial:index.partial.html -->
+                        <hr class="space">
+
+                            <form action='' class='form' data-animate="fadeInDown" data-animate-delay="300">
+                                <p class='field required'>
+                                    <label class='label required' for='titre'>Titre</label>
+                                    <input class='text-input' id='titre1' name='titre' style="font-size: 14.5px;" required type='text'
+                                        placeholder="Le titre de votre article">
+                                </p>
+                               
+                                <p class='field required'>
+                                    <label class='label required' for='photo1'>Une Photo(de haute qualite)</label>
+                                    <input class='text-input' id='photo1' name='photo1' required type='file'
+                                        accept=".png, .jpg, .jpeg">
+                                </p>
+                                <p class='field'>
+                                    <label class='label' for='about'>Introduction (facultatif)</label>
+                                    <textarea class='textarea' cols='50' id='about' name='intro' rows='4'></textarea>
+                                </p>
+                                <p class='field required'>
+                                    <label class='label' for='about'>Paragraphe 1 </label>
+                                    <textarea class='textarea' cols='50' id='about' name='paragraphe1' rows='8' required></textarea>
+                                </p>
+                                <p class='field'>
+                                    <label class='label' for='about'>Paragraphe 2 (facultatif)</label>
+                                    <textarea class='textarea' cols='50' id='about' name='paragraphe2' rows='6'></textarea>
+                                </p>
+
+                                <p class='field half'>
+                                    <input class='button' type='submit' value='Poster'>
+                                </p>
+                            </form>
+                            <!-- partial -->
+
+                        </div>
+                        <!-- Google Map -->
+                        <!-- <div class="map" data-latitude="" data-longitude="" data-style="light" data-info="Hello from &lt;br&gt; C"></div> -->
+                        <!-- end: Google Map -->
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+
+
+        <!-- end: Content -->
+ 
+        {% endblock %}

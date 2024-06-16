@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+        <!-- SECTION IMAGE FULLSCREEN -->
+        <section class="fullscreen" style="height: 800px;"  data-bg-parallax="{% static 'homepages/photography/images/parallax/1.jpg' %}">
+            <div class="container">
+                <div class="container-fullscreen" >
+                    <div class="text-middle text-light text-end" id="titrecont">
+                        <h1 data-animate="fadeInUp" data-animate-delay="700" class="text-lg-light m-b-5" id="titre">Bienvenue sur
+                            <br style="font-weight: 900;" />PosaX</h1>
+                        <h3 class="font-nothing-you-could-do" id="cont">Un instant pour profiter de MAINTENANT.</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end: SECTION IMAGE FULLSCREEN -->
+
+        
+        
+        <!-- PARALLAX -->
+        <section class="p-t-200 p-b-200" data-bg-parallax="{% static 'images/para1.jpg' %}">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="text-light text-end">
+                    <h2 class="text-medium m-b-5">Explorez la Galerie</h2>
+                    <h3 class="font-nothing-you-could-do">Decouvrez tout ce que nos artistes ont a vous proposer</h3>
+                    <a href="https://www.altiba9.com/platfrom-interviews-for-artists/zhengyuan-gao-painting-poetic-scenes" class="item-link">Explorer <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- end: PARALLAX -->
+
+
+        <!-- PARALLAX -->
+        <section class="p-t-200 p-b-200" data-bg-parallax="{% static 'images/para4.jpg' %}">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="text-light">
+                    <h2 class="text-medium m-b-5">Profil de PosaX </h2>
+                    <h3 class="font-nothing-you-could-do">Parcourez le profile de PosaX lui-même, et trouvez ce qu'il vous propose</h3>
+                    <a href="mysticism-pre.html" class="item-link">Parcourir <i class="fa fa-arrow-right"></i></a>
+                    <br>
+                    <a href="https://github.com/zhengyuan-gao/zhengyuan-gao.github.io/blob/main/files/Gao_Mysticism_2024.pdf?raw=true" class="item-link">Discuter avec PosaX (Whatsapp) <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- end: PARALLAX -->
+        
+
+        <!-- BLOG -->
+        <section class="p-b-100 background-dark text-light">
+
+            <div class="container">
+                <div class="text-center m-b-60">
+                    <h2 class="text-lg">Derniers Articles Ecrits</h2>
+                </div>
+                <div id="blog" class="grid-layout post-items-transparent post-3-columns m-b-30" data-item="post-item">
+
+
+                    
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                    <img alt="" src="{% static 'homepages/photography/images/cooper/AAAimage_s.jpg' %}">
+                                <span class="post-meta-category">PosaX</span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>Since Sept 2023</span>
+                                <h2>Arraying Artistic Agents (In Chinese) </h2>
+                                <p>Publish in instalments</p>
+                                <a href="https://spectragallery.github.io/blog/tags/#%E9%83%A8%E7%BD%B2%E8%89%BA%E6%9C%AF%E5%AA%92%E4%BB%8B" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+
+                    
+                     <!-- Post item-->
+                     <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                    <img alt="" src="{% static 'homepages/photography/images/cooper/InfernalDance-Permutation_s.jpeg' %}">
+                                <span class="post-meta-category">PosaX</span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>July 12, 2023</span>
+                                <h2>Manifesto of Infernal Dance</h2>
+                                <p>We present to you a formal manifesto advocating the revolutionary method of releasing amour fou energy — the infernal dance. Infernal dance is a conduit for liberation, challenging the established norms and stereotypes that confine the fiery power of Love.</p>
+                                <a href="https://spectragallery.github.io/blog/2023-07-12-Dance/" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                    
+                    
+                     <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                    <img alt="" src="{% static 'homepages/photography/images/cooper/bleuFlames_frame_s.jpeg' %}">
+                                <span class="post-meta-category">PosaX</span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>June 14, 2023</span>
+                                <h2>Proposal for Incomplete Combustion</h2>
+                                <p>Proposal for Implementing Incomplete Combustion with Methane in the Eastern Inferno.</p>
+                                <a href="https://spectragallery.github.io/blog/2023-06-14-BleuFlames" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                    
+                     <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                    <img alt="" src="{% static 'homepages/photography/images/cooper/headingforward_frame_s.jpeg' %}">
+                                <span class="post-meta-category">PosaX</span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>June 6, 2023</span>
+                                <h2>Blank space and Emptiness</h2>
+                                <p>Chinese paintings often embrace the concept of empty space or negative space. Blank areas in the painting are intentionally left empty to create a sense of leisure, tranquility, and, more importantly, openness, allowing viewers' imagination to fill in the gaps. By intentionally leaving areas of the painting empty, the artist allows the viewer's gaze to rest and encourages contemplation. The empty space provides the viewers with a visual pause and contributes to the overall balance and harmony of the composition. It invites the viewer to engage with the artwork and encourages a leisurely appreciation of the depicted subject matter.</p>
+                                <a href="https://spectragallery.github.io/blog/2023-06-06-BlankSpace" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                    
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                    <img alt="" src="{% static 'homepages/photography/images/gallery/cooper_2023_0518_s.jpeg' %}">
+                                <span class="post-meta-category">PosaX</span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>May 18, 2023</span>
+                                <h2>Achilles Heel in Man-Heaven Unification</h2>
+                                <p>In traditional Chinese philosophy, "man-heaven unification" (天人合一) represents an ideal state of harmony and balance between human beings and the natural world or cosmic order. It emphasises aligning one's actions and conduct with the principles of the universe, the interconnectedness, and interdependence between humanity and the larger cosmos.
+</p>
+                                <a href="https://spectragallery.github.io/blog/2023-05-18-Deny-Heaven" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                    
+                    <!-- Post item-->
+                    <div class="post-item border">
+                        <div class="post-item-wrap">
+                            <div class="post-image">
+                                    <img alt="" src="{% static 'homepages/photography/images/cooper/parliament_frame_s.jpeg' %}">
+                                <span class="post-meta-category">PosaX</span>
+                            </div>
+                            <div class="post-item-description">
+                                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>May 8, 2023</span>
+                                <h2>Infernal Parliament</h2>
+                                <p>Fryer:
+                                </p>
+                                <a href="https://spectragallery.github.io/blog/2023-05-08-parliament/" class="item-link">Read More <i class="fa fa-arrow-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Post item-->
+                
+
+                    
+                </div>
+            </div>
+        </section>
+        <!-- BLOG -->
+
+
+
+
+        
+        {% endblock %}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Posax" />
+    <meta name="description" content="Art collection from PosaX">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>PosaX | Votre Galerie d'Art </title>
+    <!-- Stylesheets & Fonts -->
+    <link href="{% static 'css/plugins.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+
+    <!-- Body Inner -->
+    <div class="body-inner">
+
+        <!-- Header -->
+        <header id="header" data-transparent="true" data-fullwidth="true" class="header-mini dark">
+            <div class="header-inner">
+                <div class="container">
+                    <!--Logo-->
+                    <div id="logo" data-animate="fadeInDown" data-animate-delay="300"> <a href="index.html"><span class="logo-default">PosaX</span><span class="logo-dark">PosaX</span></a> </div>
+                    <!--End: Logo-->
+                    <!-- Search -->
+                    <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
+                        <form class="search-form" action="search-results-page.html" method="get">
+                            <input class="form-control" name="q" type="text" placeholder="Recherchez..." />
+                            <span class="text-muted">Recherchez & pressez "Enter" ou "ESC" pour fermer</span>
+                        </form>
+                    </div>
+                    <!-- end: search -->
+                    <!--Header Extras-->
+                    <div class="header-extras">
+                        <ul>
+                            <li>
+                                <a id="btn-search" href="#"> <i class="icon-search"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end: Header Extras-->
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger"> <a class="lines-button x"><span class="lines"></span></a> </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu">
+                        <div class="container">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html">Acceuil</a></li>
+                                    <li><a href="about-us.html">A propos de nous</a></li>
+                                    <li class="dropdown mega-menu-item"><a href="#">Artistes</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="mega-menu-content">
+                                                <div class="row">
+                                                    <div class="col-lg-1-2">
+                                                        <ul>
+                                                            <li class="mega-menu-title">Etes-vous un artiste ?</li>
+                                                            <li><a href="exhibition-2023-1.html">S'inscrire</a></li>
+                                                            <li><a href="exhibition-2023-2.html">Se Connecter</a></li>
+                                                            <li><a href="PosaX.html">Completez votre profile</a></li>
+
+                                                            <li class="mega-menu-title">Etes-vous un client ?</li>
+                                                            <li><a href="mysticism-pre.html">Liste des Artistes</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a href="#">Publier</a>
+                                        <ul class="dropdown-menu">
+                                                    <li><a href="PosaX.html">Ecrire un article</a></li>
+                                                    <li><a href="PosaX.html">Poster une oeuvre</a></li>
+                                                    <li><a href="PosaX.html">Vos publications</a></li>
+                                         </ul>
+                                    </li>
+                                    <li><a href="https://spectragallery.github.io/blog/index.html">Blog</a></li>
+                                    <li><a href="contact-us.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </div>
+        </header>
+        <!-- end: Header -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% block content %}
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- FOOTER -->
+        <footer class="inverted" id="footer">
+            <div class="copyright-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="copyright-text text-center"> &copy; 2024 PosaX - Your Gallery. All Rights Reserved. </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end: FOOTER -->
+    </div>
+    <!-- end: Body Inner -->
+
+    <!-- Scroll top -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+
+    <!--Plugins-->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+
+    <!--Template functions-->
+    <script src="{% static 'js/functions.js' %}"></script>
+
+</body>
+
+</html>

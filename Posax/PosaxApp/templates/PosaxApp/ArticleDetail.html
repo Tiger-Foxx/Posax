@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+        
+        <!-- Page title -->
+        <section id="page-title" data-bg-parallax="{% static 'images/BackgroundColor.jpg' %}">
+            <div class="container">
+                <div class="container-fullscreen">
+                    <div class="text-middle text-center text-end">
+                        <p class="lead" data-animate="fadeInDown" data-animate-delay="300">Titre de l"article</p>
+                    </div>
+                </div>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Acceuil</a> </li>
+                        <li class="active">Titre de l'Article </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- end: Page title -->
+        
+        <!-- IMAGE BLOCK -->
+        <section id="section2" class="image-block no-padding" style="background-color:#000410;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6" style="height:800px;background:url({% static 'images/para3.jpg' %}) 50% 50% / cover no-repeat;">
+                    </div>
+                    <div class="col-lg-6 text-light">
+
+                        <h2 class="text-medium">Je suis un article , Un Post</h2>
+                        <p>le 09 juin 2024
+                        <br />    
+                        <br /> Auteur :   - Posax Admin
+                        <br /> 
+                            
+                        <br />" Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, expedita placeat! Ea inventore, fuga mollitia repellendus ipsum minima libero explicabo nemo eius. Odio vitae quia eveniet? Explicabo, ex quibusdam neque totam numquam inventore vero distinctio velit, nulla adipisci molestiae molestias aliquam. Quia officia quas esse laudantium nesciunt error voluptatibus voluptate omnis magni. Ipsa culpa incidunt ducimus quam excepturi. Consequatur debitis dolorum inventore sunt asperiores aperiam ipsam laudantium vel ullam ducimus alias esse, nulla earum, sequi molestiae! Fugiat autem, vero dolore incidunt cupiditate dolor recusandae accusamus voluptatibus maiores cum velit ipsum nisi aperiam voluptas, nemo cumque inventore possimus quaerat expedita illum ipsam dicta sunt at! Laborum veritatis dolore, voluptate deserunt, minima dolores cum accusantium, doloremque quos laboriosam nulla facere. Reprehenderit, commodi reiciendis! Ex repellat voluptate accusantium aspernatur, excepturi cupiditate obcaecati, non saepe molestiae deleniti unde nobis cumque sint quasi similique? Quam commodi adipisci, facere qui maxime voluptate eos animi officiis enim, inventore temporibus illo neque aliquam eaque rem, excepturi quos delectus tenetur voluptas ab tempore sequi. Voluptate voluptatum architecto atque porro fuga dolorum, ratione iste fugiat. Illum debitis quaerat repellendus, voluptatum repellat illo officiis ducimus provident iste et sapiente, ut placeat tempora. Doloremque, delectus accusamus aspernatur natus expedita maxime eos nostrum error sequi tempore quo reiciendis repellat doloribus necessitatibus quam ad in dolores aperiam deleniti beatae tempora alias eligendi laudantium quae. Sint incidunt cum commodi quo harum aliquid at, ipsum ab adipisci nostrum voluptas quis vero assumenda numquam, dolore accusamus iste dicta labore dolor excepturi omnis quod pariatur laboriosam! Illo tempora quo amet doloremque. Recusandae, ab, nulla commodi autem, dolor velit aperiam voluptas cumque nisi tempora facere. Enim molestias consequatur esse, et doloremque similique modi explicabo quos molestiae qui soluta autem quis iste unde facilis praesentium numquam quisquam quidem? Eos quae minima voluptatibus quaerat distinctio placeat rem beatae similique, praesentium error. "
+                        <br />
+                            <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. At, non. "  - PosaX Admin
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end: IMAGE BLOCK -->
+
+
+
+
+   
+
+         <!-- Contact-->
+         <section class="p-b-100 text-center" style="background-color:#000410;">
+            <div class="container">
+                <div class="m-b-60 text-light">
+                    <h5 class="text-center">Texte par PoSax Admin </h5>
+                    <h5 class="text-center">Image par PosaX Admin </h5>
+                </div>
+            </div>
+        </section>
+        <!--end: Contact-->
+ 
+        {% endblock %}

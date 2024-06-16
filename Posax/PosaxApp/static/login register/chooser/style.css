@@ -1,0 +1,34 @@
+form {
+  width: 100%;
+  text-align: center;
+}
+
+#current-profile {
+  border-radius: 50%;
+  border: 1px solid black;
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
+}
+
+#pfp-choose {
+  display: none;
+}
+
+.profile-option > button:hover {
+  cursor: pointer;
+  
+}
+
+.hide {
+  display: none;
+}
+
+.profile-option > button {
+  background-color: #c8a2c8;
+  color: white;
+  border: none;
+  width: 180px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+}

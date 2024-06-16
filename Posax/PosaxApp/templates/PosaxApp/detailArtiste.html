@@ -4,18 +4,18 @@
 {% load static %}
 
 <!-- SECTION IMAGE FULLSCREEN -->
-<section id="page-title" data-bg-parallax="{% static 'images/BackgroundColor.jpg' %}">
+<section id="page-title" data-bg-parallax="{{ artist.photo.url }}">
     <div class="container">
         <div class="container-fullscreen">
             <div class="text-middle text-center text-end">
-                <p class="lead" data-animate="fadeInDown" data-animate-delay="300">{{ artist.nom }}</p>
+                <p style="font-size: 28px;color:white;font-weight:900" data-animate="fadeInDown" data-animate-delay="300">{{ artist.nom }}</p>
             </div>
         </div>
         <div class="text-light accordion accordion-simple">
             <div class="ac-item">
-                <h1 class="ac-title">Petite Biographie</h1>
-                <div class="ac-content">
-                    <p>{{ artist.bio }}</p>
+                <h1 class="ac-title">Petite Biographie de {{artist.nom}}</h1>
+                <div class="ac-content" >
+                    <p style="font-weight:700">{{ artist.bio }}</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 <div class="post-item-wrap">
                     <div class="post-image">
                         <img alt="" src="{{ article.Photo.url }}">
-                        <span class="post-meta-category">{{ article.category }}</span>
+                        <span class="post-meta-category">{{ article.Auteur.nom }}</span>
                     </div>
                     <div class="post-item-description">
                         <h2>{{ article.titre }}</h2>
@@ -54,7 +54,7 @@
 
 <!-- GALLERY -->
 {% for category, artworks in categories.items %}
-<section id="page-content" style="background-color:#000410;margin-top:10px">
+<section id="page-content" style="background-color:#000410;margin-top:5px">
     <div class="container">
         <div class="row">
             <div class="content col-lg-12 center">
@@ -100,18 +100,18 @@
 <section class="background-dark text-light p-b-100 text-center">
     <div class="container">
         <div class="m-b-60">
-            <h3 class="text-center">Contactez l'Artiste</h3>
+            <h3 class="text-center">Contactez l'Artiste {{artist.nom}}</h3>
         </div>
         <div class="align-center"> 
-            <a class="background-dark text-light btn btn-xs btn-slide btn-light" href="{{ artist.instagram_link }}" data-width="118">
+            <a class="background-dark text-light btn btn-xs btn-slide btn-light" href="{{ artist.instagram }}" data-width="118">
                 <i class="fab fa-instagram"></i>
                 <span>Instagram</span>
             </a>
-            <a class="background-dark text-light btn btn-xs btn-slide btn-light" href="{{ artist.facebook_link }}" data-width="118">
+            <a class="background-dark text-light btn btn-xs btn-slide btn-light" href="{{ artist.facebook }}" data-width="118">
                 <i class="fab fa-facebook"></i>
                 <span>Facebook</span>
             </a>
-            <a class="background-dark text-light btn btn-xs btn-slide btn-light" href="{{ artist.whatsapp_link }}" data-width="170">
+            <a class="background-dark text-light btn btn-xs btn-slide btn-light" href="https://wa.me/{{ artist.whatsapp }}" data-width="170">
                 <i class="fab fa-whatsapp"></i>
                 <span>Whatsapp</span>
             </a>

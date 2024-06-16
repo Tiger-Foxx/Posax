@@ -13,7 +13,8 @@ CATEGORIES = [
 ]
 
 def index(request):
-    return render(request, 'PosaxApp/index.html')
+    articles=Article.objects.all().order_by('-date')
+    return render(request, 'PosaxApp/index.html',context={'articles': articles})
 
 def about(request):
     return render(request, 'PosaxApp/about-us.html')
@@ -75,28 +76,31 @@ def publier_article(request):
     return render(request, 'PosaxApp/posterArticle.html')  # Remplacer 'votre_template_article.html' par le nom du template approprié
 
 from django.shortcuts import render, get_object_or_404
-from .models import Artist, Artwork, Article
 
 def DetailArtiste(request, id):
     artist = get_object_or_404(Artiste, id=id)
-    artworks = Oeuvre.objects.filter(artist=artist)
-    articles = Article.objects.filter(author=artist)
+    artworks = Oeuvre.objects.filter(Auteur=artist)
+    articles = Article.objects.filter(Auteur=artist)
     
     # Organiser les œuvres par catégories
     categories = {}
     for artwork in artworks:
-        for category in artwork.categories.split(' '):  # Supposons que les catégories soient séparées par des espaces
+        for category in artwork.categorie.split(' '):  # Supposons que les catégories soient séparées par des espaces
             if category not in categories:
                 categories[category] = []
             categories[category].append(artwork)
     
     # Limiter le premier paragraphe des articles à 150 caractères
     for article in articles:
-        article.paragraphe1 = article.paragraphe1 [:150] + '...' if len(article.paragraphe1 ) > 150 else article.paragraphe1 
+        article.paragraphe1 = article.paragraphe1 [:80] + '...' if len(article.paragraphe1 ) > 150 else article.paragraphe1 
     
     context = {
         'artist': artist,
         'categories': categories,
         'articles': articles,
     }
-    return render(request, 'detailArtiste.html', context)
+    return render(request, 'PosaxApp/detailArtiste.html', context)
+
+def liste_artistes(request):
+    artistes = Artiste.objects.all()
+    return render(request, 'PosaxApp/ListeArtistes.html', {'artistes': artistes})

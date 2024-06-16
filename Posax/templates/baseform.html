@@ -67,6 +67,7 @@
                                                             <li class="mega-menu-title">Profil Artiste</li>
                                                             <li><a href="{% url 'logout' %}">Se deconnecter</a></li>
                                                             <li><a href="{% url 'profile' user.id %}">Completez votre profile</a></li>
+                                                            <li><a href="{% url 'liste_artistes' %}">Liste des Artistes</a></li>
 
                                                             
                                                         </ul>
@@ -79,7 +80,7 @@
                                                             <li><a href="{% url 'connexion' %}">Se Connecter</a></li>
 
                                                             <li class="mega-menu-title">Etes-vous un client ?</li>
-                                                            <li><a href="mysticism-pre.html">Liste des Artistes</a></li>
+                                                            <li><a href="{% url 'liste_artistes' %}">Liste des Artistes</a></li>
                                                         </ul>
                                                     </div>
                                                     {% endif %}

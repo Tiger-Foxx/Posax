@@ -5,11 +5,11 @@
 
 
         <!-- Page title -->
-        <section id="page-title" data-bg-parallax="images/BackgroundColor.jpg">
+        <section id="page-title" data-bg-parallax="{% static 'images/para1.jpg' %}">
             <div class="container">
                 <div class="container-fullscreen">
                     <div class="text-middle text-center text-end">
-                        <p class="lead" data-animate="fadeInDown" data-animate-delay="300">Listes de nos Artistes</p>
+                        <p style="font-size: 28px;color:white;font-weight:900" data-animate="fadeInDown" data-animate-delay="300">Listes de nos Artistes</p>
                     </div>
                 </div>
                 <div class="breadcrumb">
@@ -31,58 +31,30 @@
                     <div class="container">
                         
                         <div class="row team-members team-members-shadow m-b-40">
-                            <div class="col-lg-6">
-                                <div class="team-member">
-                                    <div class="team-image">
-                                        <!-- ici on doit mettra sa photo -->
-                                        <img src="homepages/photography/images/exhibition/2023-1/dandi.jpeg">
-                                    </div>
-                                    <div class="team-desc">
-                                        <h3>Dandi Gu</h3>
-                                        <p>Full time artist, base in Shanghai</p>
-                                        <div class="align-center">
-                                            <a class="btn btn-xs btn-slide btn-light" style="color: green;" href="https://www.instagram.com/tianyi_liu_olive/" data-width="118">
-                                                <i class="fab fa-whatsapp"></i>
-                                                <span>Whatsapp</span>
-                                            </a>
+                            
+                            {% for artist in artistes %}
+                                <div class="col-lg-6">
+                                    <div class="team-member">
+                                        <div class="team-image">
+                                            <!-- ici on doit mettra sa photo -->
+                                             
+                                            <img src="{{artist.photo.url}}">
+                                        </div>
+                                        <div class="team-desc">
+                                            <a href="{% url 'DetailArtiste' artist.id %}"><h3>{{artist.nom}}</h3></a>
+                                            <p>Artiste, email : {{artist.email}}</p>
+                                            <div class="align-center">
+                                                <a class="btn btn-xs btn-slide btn-light" style="color: green;" href="https://wa.me/{{artist.whatsapp}}" data-width="118">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                    <span>Whatsapp</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="team-member">
-                                    <div class="team-image">
-                                        <img src="homepages/photography/images/exhibition/2023-1/maoer.jpeg">
-                                    </div>
-                                    <div class="team-desc">
-                                        <h3>Olive (Mao'er)</h3>
-                                        <p>Full time artist, base in Beijing </p>
-                                        <div class="align-center">
-                                            <a class="btn btn-xs btn-slide btn-light" href="https://www.instagram.com/tianyi_liu_olive/" data-width="118">
-                                                <i class="fab fa-whatsapp"></i>
-                                                <span>Whatsapp</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="team-member">
-                                    <div class="team-image">
-                                        <img src="homepages/photography/images/exhibition/2023-1/maoer.jpeg">
-                                    </div>
-                                    <div class="team-desc">
-                                        <h3>Olive (Mao'er)</h3>
-                                        <p>Full time artist, base in Beijing </p>
-                                        <div class="align-center">
-                                            <a class="btn btn-xs btn-slide btn-light" href="https://www.instagram.com/tianyi_liu_olive/" data-width="118">
-                                                <i class="fab fa-whatsapp"></i>
-                                                <span>Whatsapp</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+                                
+                           
                            
                         </div>
                     </div>

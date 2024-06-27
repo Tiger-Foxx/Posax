@@ -1,0 +1,397 @@
+je suis entrain de developper une application web Django :
+
+Bien sûr, voici la répétition du cahier des charges simplifié pour l'application web PosaX :
+
+# Cahier des Charges Simplifié pour l'Application Web PosaX
+
+## Introduction
+
+Ce document décrit en détail le projet de développement de l'application web PosaX. C'est une plateforme en ligne où les artistes peuvent afficher et vendre leurs œuvres. Ce projet est réalisé par l'équipe Fox, en utilisant le framework Django (Python) et hébergé sur PythonAnywhere.
+
+## Objectifs du Projet
+
+L'objectif principal de PosaX est de permettre aux artistes de s'inscrire, de créer un profil et de publier leurs œuvres pour les vendre. Les clients pourront voir ces œuvres, contacter les artistes directement via WhatsApp, et passer des commandes.
+
+## Fonctionnalités Détails
+
+### Pour les Artistes
+
+1. **Inscription et Connexion:**
+   - **Inscription:** Les artistes pourront créer un compte en fournissant leurs informations.
+   - **Connexion:** Ils pourront se connecter avec leur email et mot de passe.
+
+2. **Gestion du Profil:**
+   - **Création du Profil:** Les artistes pourront créer leur profil avec une photo et une description.
+   - **Modification du Profil:** Ils pourront mettre à jour leurs informations.
+
+3. **Publication des Œuvres:**
+   - **Ajouter des Œuvres:** Les artistes pourront ajouter des œuvres avec un titre, une description, un prix et des images.
+   - **Modifier des Œuvres:** Ils pourront mettre à jour les informations de leurs œuvres.
+   - **Supprimer des Œuvres:** Ils pourront enlever des œuvres de la plateforme.
+
+### Pour les Clients
+
+1. **Voir les Œuvres:**
+   - **Catalogue des Œuvres:** Les clients pourront voir toutes les œuvres disponibles.
+   - **Recherche:** Ils pourront chercher des œuvres par artiste, catégorie, prix, etc.
+
+2. **Contact des Artistes:**
+   - **WhatsApp:** Les clients pourront contacter les artistes directement via WhatsApp pour poser des questions ou acheter des œuvres.
+
+### Autres Fonctionnalités
+
+1. **Référencement (SEO):**
+   - **Structure Optimale:** La plateforme sera conçue pour être facilement trouvée sur les moteurs de recherche comme Google.
+   - **Métadonnées:** Chaque page et chaque œuvre auront des informations spéciales pour aider à être mieux référencées.
+
+## Technologies Utilisées
+
+1. **Framework:**
+   - Django (Python)
+
+2. **Hébergement:**
+   - PythonAnywhere (formule Hacker à 5€ par mois)
+
+3. **Nom de Domaine:**
+   - Le client devra acheter son propre nom de domaine sur GoDaddy. Le coût du nom de domaine est compris entre 15 et 30 dollars par an, avec une réduction la première année entre 1 et 10 dollars selon le domaine choisi.
+
+## Hébergement Temporaire
+
+Si le client ne peut pas acheter le nom de domaine ou l'hébergement payant tout de suite, la plateforme sera hébergée temporairement sur une formule d'hébergement gratuite. Plus tard, nous pourrons transférer le site vers un hébergement payant avec le nom de domaine acheté.
+
+## Planning et Paiement
+
+- **Durée de Développement:**
+  - 2 semaines
+
+- **Paiement:**
+  - 65 000 XAF, payables en une fois, au plus tard deux jours après la fin du développement.
+
+## Référencement et SEO
+
+Le succès du référencement dépendra du nombre de visiteurs et de l'engagement sur le site. Nous allons concevoir le site de manière optimale pour un bon référencement, mais la popularité dépendra aussi de la promotion et de l'utilisation.
+
+## Conditions Générales
+
+1. **Nom de Domaine:**
+   - Le client achètera son propre nom de domaine sur GoDaddy. Le coût est entre 15 et 30 dollars par an, avec une réduction la première année de 1 à 10 dollars.
+
+2. **Paiement:**
+   - Les frais de développement s'élèvent à 65 000 XAF, payables en une fois.
+
+3. **Référencement:**
+   - La popularité du site dépendra du taux de consultation et de l'engagement des utilisateurs.
+
+## Conclusion
+
+Ce cahier des charges explique en détail le projet PosaX. L'équipe Fox s'engage à fournir une plateforme de qualité répondant aux besoins des artistes et des clients.
+
+Pour toute question ou clarification, n'hésitez pas à nous contacter.
+
+---
+
+**Équipe de Développement Fox**
+
+
+maintenant je voudrais que tu m'assiste dans le developpement 
+
+j'ai cree le model utilisateur Artiste , maintenant il me faut les fonctions d'inscription , de connexion et de modification du profile , mais pas n'importe comment , j'avais déjà fais un projet Django et je voudrais que tu prennes exemple sur comment j'avias fais ces fonctions evc ajax et que tu fasses pareil, et aussi que tu adaptes les templates (si nécessaires aux diferentes veues que tu vas coder , il est aussi important de faire le js de ajax necessaire , et je nas  oublier les jetons csrf : 
+bon commencons par le model utilisateur le voila :
+class Artiste(AbstractUser):
+    username = models.CharField(max_length=13, unique=True) # il s'agit ici en realite de son email
+    email = models.EmailField()
+    password = models.CharField(max_length=500)
+    nom=models.CharField(max_length=200,null=True,blank=True)
+    bio=models.TextField(blank=True,null=True)
+    whatsapp = models.CharField(max_length=13,null=True,blank=True)
+    facebook = models.CharField(max_length=300,null=True,blank=True)
+    instagram = models.CharField(max_length=300,null=True,blank=True)
+    email_verified = models.BooleanField(default=False)
+    photo=models.ImageField(upload_to='Photo de profils')
+    #champs non editables
+    date=models.DateField(auto_now=True,editable=False)
+    def __str__(self):
+        return f"Artiste | nom: {self.nom} | whatsapp: {self.whatsapp}"
+
+ensiuite voila un peu comment je veux que l'inscription et la connexion soit faite ( ca c'est pour mon autre projet je veux juste que tu fasses le meme genre ) :
+import datetime
+from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth import get_user_model,login,logout,authenticate
+import django.contrib.auth.models
+from django.http import JsonResponse
+from django.contrib.auth.hashers import make_password
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.conf import settings
+import random
+import string
+from Comptes.models import *
+from GofindApp.models import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
+
+User=get_user_model()
+
+
+# Create your views here.
+
+############################## AUTHENTIFICATION ##############################
+##############################################################################
+
+
+"""
+Vue qui se charge de l'inscription de nouveaux utilisateurs 
+
+"""
+
+
+def inscription(request):
+    if request.method == 'POST':
+        passwordConfirm = request.POST.get("Confpassword")
+        password = request.POST.get("password")
+        name = request.POST.get("nom")
+        email = request.POST.get("email")
+        telephone = request.POST.get("telephone")
+        ville = request.POST.get("ville")
+        Remember = request.POST.get("remember-me")
+
+        if password == passwordConfirm:
+            try:
+                user = Utilisateur.objects.create_user(username=email, nom=name, password=password, whatsapp=telephone, ville=ville, email=email) # type: ignore
+                user.is_active = False  # Désactiver le compte jusqu'à la vérification de l'email
+                user.save()
+
+                current_site = get_current_site(request)
+                mail_subject = 'Activez votre compte.'
+                message = render_to_string('Comptes/acc_active_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': default_token_generator.make_token(user),
+                })
+                send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [email])
+
+                return JsonResponse({"success": True, "redirect_url": "confirmation/"})
+            except Exception as e:
+                return JsonResponse({"success": False, "message": str(e)})
+        else:
+            return JsonResponse({"success": False, "message": "Les mots de passe ne correspondent pas."})
+    else:
+        return render(request, "Comptes/Register.html")
+
+def confirmation(request):
+    return render(request, 'Comptes/confirmation_message.html') 
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = Utilisateur.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Utilisateur.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.email_verified = True
+        user.save()
+        login(request, user)
+        return redirect('index')
+    else:
+        return render(request, 'Comptes/activation_invalid.html')
+
+"""
+Vue qui se charge de la connexion au compte des utilisateurs
+
+"""   
+
+def connexion(request):
+    if request.method == 'POST':
+        # conecter l'utilisateur
+        email = request.POST.get("email")
+        password =request.POST.get("password")
+        Remember =request.POST.get("remember-me")
+        print("le mdp est : "+password)
+        print("l'email est : "+email)
+        
+        user=authenticate(username=email, password=password) 
+        if user:
+            login(request,user)
+            request.session.set_expiry(1209600) # 2 weeks
+            if not Remember:
+                print("ok")
+                request.session.set_expiry(0)
+            return JsonResponse({"success": True, "redirect_url": "/"})#apres inscription on le redirige
+        else:    
+            return JsonResponse({"success": False, "message": "Nom d'utilisateur ou mot de passe incorrect !"}) # Renvoyer une réponse JSON avec un indicateur d'échec et un message d'erreur
+
+    else :
+        return render(request,'Comptes/Login.html')
+
+
+et ici c'est mon Template , c'est un formulaire animee qui switch au choix entre inscription et connexion (modifie le comme il faudra et fais aussi attention concernant le js parce que la le login et le register sont dans le mem document html):
+
+<!----------------------------- Form box ----------------------------------->
+        <div class="form-box">
+
+            <!------------------- login form -------------------------->
+
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Vous n'avez pas de compte ? <a href="#" onclick="register()">Inscription</a></span>
+                    <header>Connexion</header>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" required placeholder="Email">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" required placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <label for="" id="ErrorMessageLogin" style="color: red;font-weight:900"></label>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Sign In">
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox"  name="remember-me" id="login-check">
+                        <label for="login-check"> Se souvenir de moi</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Mot de passe oublie?</a></label>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------- registration form -------------------------->
+            <div class="register-container" id="register">
+                <div class="top">
+                    <span>Vous avez un compte ? <a href="#" onclick="login()">Connexion</a></span>
+                    <header>Inscription</header>
+                </div>
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname">
+                        <i class="bx bx-user"></i>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Email">
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <img src="{% static 'login register/images/user.png' %}"
+                        alt="Default Avatar Profile Vector, User Profile Stock Vector - Illustration of  graphic, media: 179376714"
+                        onclick="uploadProfile()" id="current-profile">
+                    <div class="profile-options hide">
+                        <div class="profile-option" id="upload-pfp">
+                            <button hidden="true" id="upload-btn" onclick="uploadProfile()" type="button">Upload
+                                picture</button>
+                            <input type="file" id="choose" accept=".png, .jpg, .jpeg">
+                        </div>
+
+                    </div>
+                </div>
+                <label for="" id="ErrorMessageRegister" style="color: red;font-weight:900"></label>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
+                </div>
+
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="register-check">
+                        <label for="register-check">Se souvenir</label>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+Pour ce qui est de comment était le js de mon autre projet le voila pour login par exemple :
+ <form action="" class="the-form">
+                    {% csrf_token %}
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Votre Addresse mail"  required>
+
+                    <label for="password">Mot de Passe</label>
+                    <input type="password" name="password" id="password" placeholder="Mot de Passe" required>
+                    <h4 class="title" id="errorMessage" ></h4>
+                    <div class="row">
+                        <label for="remember-me" style="margin-right: 5px;">Se souvenir de moi</label>
+                        <input type="checkbox" name="remember-me" id="remember-me">
+                    </div>
+                    <a href="#" onclick="send_data()"  class="btn hvr-hover" style="color: #ffffff;margin-top:5px;height:60px ; font-weight:900;justify-content:center;align-items:center;display:flex;background-color:rgb(248, 105, 105)"> GOOOOOOOO</a>                   
+                </form>
+                <script>
+                    function sub2() {
+                        document.getElementById("btnSub2").click();
+                    }
+                    function getCookie(name) {
+                      // Cette fonction renvoie la valeur du cookie nommé name, ou null si le cookie n'existe pas
+                      var cookieValue = null;
+                      if (document.cookie && document.cookie !== "") {
+                          var cookies = document.cookie.split(";");
+                          for (var i = 0; i < cookies.length; i++) {
+                              var cookie = cookies[i].trim();
+                              // Vérifier si le cookie commence par le nom recherché
+                              if (cookie.substring(0, name.length + 1) === name + "=") {
+                                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                  break;
+                              }
+                          }
+                      }
+                      return cookieValue;
+                  }
+                    function send_data() {
+      
+                        // Récupérer les données du formulaire
+                        var email = document.getElementById("email").value;
+                        var password = document.getElementById("password").value;
+      
+      
+                        // Créer un objet FormData pour stocker les données du formulaire
+                        var form_data = new FormData();
+                        form_data.append("email", email);
+                        form_data.append("password", password);
+                        form_data.append("remember-me", document.getElementById("checkbox-remember"));
+      
+      
+                        // Créer un objet XMLHttpRequest pour envoyer la requête Ajax
+                        var xhr = new XMLHttpRequest();
+      
+                        xhr.open("POST", "/connexion/", true); // Remplacer "/singup/" par l'URL de votre vue Django
+                        xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken")); // Ajouter le token CSRF pour la sécurité
+                        xhr.onload = function () {
+                            // Traiter la réponse du serveur
+                            if (xhr.status == 200) {
+                                // La requête a réussi
+                                var response = JSON.parse(xhr.responseText); // Convertir la réponse en objet JSON
+                                if (response.success) {
+                                    // L'inscription ou la connexion a réussi
+                                    window.location.href = response.redirect_url; // Rediriger l'utilisateur vers une autre page
+                                } else {
+                                    // L'inscription ou la connexion a échoué
+                                    document.getElementById("errorMessage").innerHTML = response.message; // Afficher le message d'erreur
+                                }
+                            } else {
+                                // La requête a échoué
+                                document.getElementById("errorMessage").innerHTML = "OUPS !! Une Erreur s'est produite "; // Afficher un message générique
+                            }
+                        };
+                        xhr.send(form_data); // Envoyer les données du formulaire
+                    }
+      
+                </script>
+ 
+
+ 
